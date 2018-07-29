@@ -8927,7 +8927,7 @@ Source: AVX .. aphvc.pdf</description>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="+3V1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="SBUS" library="con-molex-c-grid-sl" deviceset="HEADER_POS3_?" device="70545"/>
+<part name="SBUS_IN" library="con-molex-c-grid-sl" deviceset="HEADER_POS3_?" device="70545"/>
 <part name="CAN" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" deviceset="DB9" device="MALE" package3d_urn="urn:adsk.eagle:package:38021/1"/>
 <part name="GPS_MODULE" library="adafruit-sensor-boards" deviceset="ULTIMATE-GPS" device=""/>
 <part name="H1" library="holes" deviceset="MOUNT-PAD-ROUND" device="3.3"/>
@@ -8940,6 +8940,11 @@ Source: AVX .. aphvc.pdf</description>
 <part name="C1" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="SBUS_OUT" library="con-molex-c-grid-sl" deviceset="HEADER_POS3_?" device="70545"/>
+<part name="IC1" library="74xx-little-us" library_urn="urn:adsk.eagle:library:87" deviceset="74*1G06" device="DBV" package3d_urn="urn:adsk.eagle:package:2482/1" technology="AUC"/>
+<part name="R2" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/2" value="4k7"/>
+<part name="P+3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="C2" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-EU" device="C0603" package3d_urn="urn:adsk.eagle:package:23616/2" value="100n"/>
 </parts>
 <sheets>
 <sheet>
@@ -8955,7 +8960,7 @@ Source: AVX .. aphvc.pdf</description>
 <instance part="P+1" gate="1" x="55.88" y="205.74"/>
 <instance part="+3V1" gate="G$1" x="63.5" y="205.74"/>
 <instance part="GND1" gate="1" x="53.34" y="53.34"/>
-<instance part="SBUS" gate="G$1" x="175.26" y="147.32" rot="MR180"/>
+<instance part="SBUS_IN" gate="G$1" x="175.26" y="147.32" rot="MR180"/>
 <instance part="CAN" gate="G$1" x="101.6" y="175.26" rot="R90"/>
 <instance part="GPS_MODULE" gate="G$1" x="106.68" y="119.38" rot="MR0"/>
 <instance part="GPS_MODULE" gate="G$2" x="104.14" y="101.6" rot="R180"/>
@@ -8966,11 +8971,17 @@ Source: AVX .. aphvc.pdf</description>
 <instance part="H4" gate="G$1" x="101.6" y="63.5"/>
 <instance part="IC2" gate="G$1" x="144.78" y="139.7" rot="R180"/>
 <instance part="IC2" gate="G$2" x="149.86" y="111.76"/>
-<instance part="R1" gate="G$1" x="121.92" y="160.02" rot="R90"/>
-<instance part="+3V2" gate="G$1" x="121.92" y="170.18"/>
+<instance part="R1" gate="G$1" x="121.92" y="193.04" rot="R90"/>
+<instance part="+3V2" gate="G$1" x="121.92" y="205.74"/>
 <instance part="C1" gate="G$1" x="139.7" y="111.76"/>
 <instance part="GND2" gate="1" x="139.7" y="96.52"/>
 <instance part="P+2" gate="1" x="139.7" y="127"/>
+<instance part="SBUS_OUT" gate="G$1" x="175.26" y="165.1" rot="MR180"/>
+<instance part="IC1" gate="G$1" x="144.78" y="162.56"/>
+<instance part="R2" gate="G$1" x="160.02" y="193.04" rot="R90"/>
+<instance part="IC1" gate="G$2" x="160.02" y="111.76"/>
+<instance part="P+3" gate="1" x="160.02" y="205.74"/>
+<instance part="C2" gate="G$1" x="170.18" y="111.76"/>
 </instances>
 <busses>
 </busses>
@@ -8996,9 +9007,14 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="91.44" y1="187.96" x2="106.68" y2="187.96" width="0.1524" layer="91"/>
 <pinref part="CAN" gate="G$1" pin="9"/>
 <wire x1="106.68" y1="187.96" x2="106.68" y2="182.88" width="0.1524" layer="91"/>
-<pinref part="SBUS" gate="G$1" pin="2"/>
-<wire x1="170.18" y1="147.32" x2="55.88" y2="147.32" width="0.1524" layer="91"/>
+<pinref part="SBUS_IN" gate="G$1" pin="2"/>
+<wire x1="170.18" y1="147.32" x2="167.64" y2="147.32" width="0.1524" layer="91"/>
 <junction x="55.88" y="147.32"/>
+<pinref part="SBUS_OUT" gate="G$1" pin="2"/>
+<wire x1="167.64" y1="147.32" x2="55.88" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="165.1" x2="167.64" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="167.64" y1="165.1" x2="167.64" y2="147.32" width="0.1524" layer="91"/>
+<junction x="167.64" y="147.32"/>
 </segment>
 <segment>
 <pinref part="C1" gate="G$1" pin="1"/>
@@ -9009,6 +9025,19 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="139.7" y1="121.92" x2="149.86" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="121.92" x2="149.86" y2="119.38" width="0.1524" layer="91"/>
 <junction x="139.7" y="121.92"/>
+<wire x1="149.86" y1="121.92" x2="160.02" y2="121.92" width="0.1524" layer="91"/>
+<junction x="149.86" y="121.92"/>
+<pinref part="IC1" gate="G$2" pin="VCC"/>
+<wire x1="160.02" y1="121.92" x2="160.02" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="121.92" x2="170.18" y2="121.92" width="0.1524" layer="91"/>
+<junction x="160.02" y="121.92"/>
+<pinref part="C2" gate="G$1" pin="1"/>
+<wire x1="170.18" y1="121.92" x2="170.18" y2="114.3" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R2" gate="G$1" pin="2"/>
+<pinref part="P+3" gate="1" pin="+5V"/>
+<wire x1="160.02" y1="203.2" x2="160.02" y2="198.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+3V3" class="0">
@@ -9029,7 +9058,7 @@ Source: AVX .. aphvc.pdf</description>
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <pinref part="+3V2" gate="G$1" pin="+3V3"/>
-<wire x1="121.92" y1="167.64" x2="121.92" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="203.2" x2="121.92" y2="198.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -9104,9 +9133,14 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="101.6" y1="162.56" x2="53.34" y2="162.56" width="0.1524" layer="91"/>
 <junction x="101.6" y="162.56"/>
 <junction x="53.34" y="162.56"/>
-<pinref part="SBUS" gate="G$1" pin="3"/>
-<wire x1="170.18" y1="149.86" x2="53.34" y2="149.86" width="0.1524" layer="91"/>
+<pinref part="SBUS_IN" gate="G$1" pin="3"/>
+<wire x1="170.18" y1="149.86" x2="165.1" y2="149.86" width="0.1524" layer="91"/>
 <junction x="53.34" y="149.86"/>
+<pinref part="SBUS_OUT" gate="G$1" pin="3"/>
+<wire x1="165.1" y1="149.86" x2="53.34" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="167.64" x2="165.1" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="167.64" x2="165.1" y2="149.86" width="0.1524" layer="91"/>
+<junction x="165.1" y="149.86"/>
 </segment>
 <segment>
 <pinref part="C1" gate="G$1" pin="2"/>
@@ -9117,6 +9151,14 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="139.7" y1="101.6" x2="149.86" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="101.6" x2="149.86" y2="104.14" width="0.1524" layer="91"/>
 <junction x="139.7" y="101.6"/>
+<wire x1="149.86" y1="101.6" x2="160.02" y2="101.6" width="0.1524" layer="91"/>
+<junction x="149.86" y="101.6"/>
+<pinref part="IC1" gate="G$2" pin="GND"/>
+<wire x1="160.02" y1="101.6" x2="160.02" y2="104.14" width="0.1524" layer="91"/>
+<pinref part="C2" gate="G$1" pin="2"/>
+<wire x1="160.02" y1="101.6" x2="170.18" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="101.6" x2="170.18" y2="106.68" width="0.1524" layer="91"/>
+<junction x="160.02" y="101.6"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -9166,17 +9208,37 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="IC2" gate="G$1" pin="O"/>
 <pinref part="R1" gate="G$1" pin="1"/>
 <wire x1="121.92" y1="139.7" x2="134.62" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="121.92" y1="154.94" x2="121.92" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="187.96" x2="121.92" y2="139.7" width="0.1524" layer="91"/>
 <junction x="121.92" y="139.7"/>
 </segment>
 </net>
 <net name="N$6" class="0">
 <segment>
-<pinref part="SBUS" gate="G$1" pin="1"/>
+<pinref part="SBUS_IN" gate="G$1" pin="1"/>
 <wire x1="170.18" y1="144.78" x2="160.02" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="144.78" x2="160.02" y2="139.7" width="0.1524" layer="91"/>
 <wire x1="160.02" y1="139.7" x2="154.94" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="IC2" gate="G$1" pin="I"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="SBUS_OUT" gate="G$1" pin="1"/>
+<pinref part="IC1" gate="G$1" pin="O"/>
+<wire x1="170.18" y1="162.56" x2="160.02" y2="162.56" width="0.1524" layer="91"/>
+<pinref part="R2" gate="G$1" pin="1"/>
+<wire x1="160.02" y1="162.56" x2="154.94" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="187.96" x2="160.02" y2="162.56" width="0.1524" layer="91"/>
+<junction x="160.02" y="162.56"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="SBUS_BBBL" gate="G$1" pin="4"/>
+<wire x1="43.18" y1="137.16" x2="119.38" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="137.16" x2="119.38" y2="162.56" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="I"/>
+<wire x1="119.38" y1="162.56" x2="134.62" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
